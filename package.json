@@ -29,6 +29,6 @@
     "body-parser": "^1.18.2",
     "cluster-service": "^2.0.0",
     "express": "^4.16.2",
-    "spy": "^1.0.0"
+    "sinon": "^4.1.1"
   }
 }

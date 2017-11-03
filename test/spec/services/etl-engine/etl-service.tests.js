@@ -17,8 +17,13 @@ describe('EtlService Tests', function() {
     /*
       do not not test method signatures as we pass arguments as objects
     */
-    it('should accept two arguements', function(done) {
-      expect(etlService.collectInput).to.not.be.arguments;
+    it('should put an arument called signals into an object named signals', function(done) {
+
+      //this needs to be moved into a helper that tests itself..
+      var argumentObject = {};
+      argumentObject.samples = sinon.spy();
+      etlService.collectInput(argumentObject);
+      sinon.assert.calledOnce(argumentObject.samples);
       done();
     });
 
