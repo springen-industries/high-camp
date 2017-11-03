@@ -1,4 +1,9 @@
 {
   "routes": [
+    {
+      "route": "/v1/roles/:roleid",
+      "method": "GET",
+      "controller": "../controllers/v1/opportunities/roles-controller"
+    }
   ]
 }
