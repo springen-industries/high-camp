@@ -2,7 +2,8 @@
 function EtlService() {
 }
 
-function collectInput() {
+function collectInput(args) {
+    //get the samples array
 
 }
 

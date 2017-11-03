@@ -18,16 +18,26 @@ describe('EtlService Tests', function() {
       do not not test method signatures as we pass arguments as objects
     */
     it('should put an arument called signals into an object named signals', function(done) {
-
+      //
+      args = getCollectInputArgs();
       //this needs to be moved into a helper that tests itself..
-      var argumentObject = {};
-      argumentObject.samples = sinon.spy();
-      etlService.collectInput(argumentObject);
-      sinon.assert.calledOnce(argumentObject.samples);
+      spy = sinon.spy(args,"samples");
+      etlService.collectInput(args,spy);
+      console.log(spy);
+      expect(spy).to.have.been.calledWith("collectInput args");
+
       done();
     });
 
   });
+
+  function getCollectInputArgs(){
+    return function collectInputArgsFactory(){
+        this.samples =  [];
+    }
+  }
+
+
 
   // describe('parseSamples', function() {
   //   it('should be a function', function(done) {
