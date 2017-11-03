@@ -7,12 +7,44 @@ describe('EtlService Tests', function() {
     etlService = require('../../../../app/services/etl-engine/etl-service');
   });
 
-  describe('lookupEtl', function() {
-
+  describe('collectInput', function() {
     it('should be a function', function(done) {
-      expect(etlService.lookupEtl).to.be.a('function');
+      expect(etlService.collectInput).to.be.a('function');
       done();
     });
-
   });
+
+  describe('parseSamples', function() {
+    it('should be a function', function(done) {
+      expect(etlService.parseSamples).to.be.a('function');
+    });
+  });
+
+  describe('processSamples', function() {
+    it('should be a function', function(done) {
+      expect(etlService.processSamples).to.be.a('function');
+    });
+  });
+
+  describe('beginStateLoop', function() {
+    it('should be a function', function(done) {
+      expect(etlService.beginStateLoop).to.be.a('function');
+    });
+  });
+
+  describe('completeStateLoop', function() {
+    it('should be a function', function(done) {
+      expect(etlService.completeStateLoop).to.be.a('function');
+    });
+  });
+
+
+  describe('calculateStatefuls', function() {
+    it('should be a function', function(done) {
+      expect(etlService.calculateStatefuls).to.be.a('function');
+    });
+  });
+
+
+
 });
