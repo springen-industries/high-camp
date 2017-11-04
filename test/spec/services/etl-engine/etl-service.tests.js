@@ -19,9 +19,10 @@ describe('EtlService Tests', function() {
     */
     it('should put an arument called signals into an object named signals', function(done) {
       //lets add some behavioral rules for our mock
-      signals.expects("list").once().throws();
+      var signals = mockFactory.createSignals();
+      var mock = sinon.mock(signals).expects("list").atLeast(1);
       etlService.collectInput(signals);
-      signals.verify();
+      mock.verify();
       done();
     })
   });

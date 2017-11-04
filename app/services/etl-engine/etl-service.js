@@ -2,9 +2,10 @@
 function EtlService() {
 }
 
-function collectInput(args) {
+function collectInput(services) {
     //get the samples array
-
+    //console.log(services);
+    services.list();
 }
 
 EtlService.prototype = {
