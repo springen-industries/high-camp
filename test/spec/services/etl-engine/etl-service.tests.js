@@ -27,9 +27,9 @@ describe('EtlService Tests', function() {
     });
 
     it('should return an array',function(done) {
-      console.log(signals);
-      expect(etlService.collectInput(signals)).to.be.an('Array');
-      // expect(sigs.length).to.not.be(0);
+      var etlResult = etlService.collectInput(signals);
+      expect(etlResult).to.be.an('Array');
+      expect(etlResult.length).to.not.equal(0);
       done();
     });
 

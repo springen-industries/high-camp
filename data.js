@@ -20,11 +20,14 @@ function createSignals(){
    function SignalEngine(){
 
        this.list  = function() {
-         return [];
+         var rv= [];
+         rv.push(gmail);
+         rv.push(pingSensor);
+         return rv;
      }
    }
    var signalEngine = new SignalEngine();
-   signalEngine.list()["gmail"] = gmail;
+
    return  signalEngine;
 
 }
