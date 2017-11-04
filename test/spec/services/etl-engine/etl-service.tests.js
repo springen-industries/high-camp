@@ -26,11 +26,10 @@ describe('EtlService Tests', function() {
       done();
     });
 
-    it('should return an array of callback handles',function(done) {
-      var sigs = etlService.collectInput(signals);
-      expect(sigs).to.be.an('Array');
-      expect(sigs).to.not.be(0);
-
+    it('should return an array',function(done) {
+      console.log(signals);
+      expect(etlService.collectInput(signals)).to.be.an('Array');
+      // expect(sigs.length).to.not.be(0);
       done();
     });
 
