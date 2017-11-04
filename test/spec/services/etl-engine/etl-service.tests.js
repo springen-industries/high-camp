@@ -17,15 +17,23 @@ describe('EtlService Tests', function() {
     /*
       do not not test method signatures as we pass arguments as objects
     */
-    it('should put an arument called signals into an object named signals', function(done) {
-      //
+    it('should invoke list() on signals', function(done) {
+      //lets add some behavioral rules for our mock
 
-      //this needs to be moved into a helper that tests itself..
+      var mock = sinon.mock(signals).expects("list").atLeast(1);
       etlService.collectInput(signals);
-      expect(signals).to.not.be.null;
+      mock.verify();
       done();
-    })
+    });
+
+    it('should return an array of callback handles',function(done) {
+      expect(etlService.collectInput(signals)).to.be.an('Array');
+      done();
+    });
+
   });
+
+
 
 
 
