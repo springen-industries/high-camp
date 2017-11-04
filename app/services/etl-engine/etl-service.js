@@ -2,12 +2,13 @@
 function EtlService() {
 }
 
-function lookupEtl(id) {
-  return { id: id };
+function collectInput(args) {
+    //get the samples array
+
 }
 
 EtlService.prototype = {
-  lookupEtl: lookupEtl
+  collectInput: collectInput
 };
 
 var etlService = new EtlService();
