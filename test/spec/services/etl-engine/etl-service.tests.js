@@ -18,9 +18,8 @@ describe('EtlService Tests', function() {
       do not not test method signatures as we pass arguments as objects
     */
     it('should put an arument called signals into an object named signals', function(done) {
-      //
-
-      //this needs to be moved into a helper that tests itself..
+      //lets add some behavioral rules for our mock
+      signals.expects("list").once().throws();
       etlService.collectInput(signals);
       expect(signals).to.not.be.null;
       done();
