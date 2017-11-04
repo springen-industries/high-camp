@@ -4,6 +4,7 @@ function EtlService() {
 
 function collectInput(services) {
     var sampleList = services.list();
+    return [];
 }
 
 EtlService.prototype = {
