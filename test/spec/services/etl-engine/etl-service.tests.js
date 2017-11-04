@@ -27,7 +27,10 @@ describe('EtlService Tests', function() {
     });
 
     it('should return an array of callback handles',function(done) {
-      expect(etlService.collectInput(signals)).to.be.an('Array');
+      var sigs = etlService.collectInput(signals);
+      expect(sigs).to.be.an('Array');
+      expect(sigs).to.not.be(0);
+
       done();
     });
 
