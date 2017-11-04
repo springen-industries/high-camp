@@ -19,13 +19,21 @@ describe('EtlService Tests', function() {
     */
     it('should invoke list() on signals', function(done) {
       //lets add some behavioral rules for our mock
-      var signals = mockFactory.createSignals();
+
       var mock = sinon.mock(signals).expects("list").atLeast(1);
       etlService.collectInput(signals);
       mock.verify();
       done();
-    })
+    });
+
+    it('should return an array of callback handles',function(done) {
+      expect(etlService.collectInput(signals)).to.be.an('Array');
+      done();
+    });
+
   });
+
+
 
 
 
