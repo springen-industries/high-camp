@@ -36,4 +36,4 @@ MockFactory.prototype = {
  var mockFactory = new MockFactory();
 module.exports = mockFactory
 
- console.log(mockFactory.createSignals().list());
+// console.log(mockFactory.createSignals().list());
