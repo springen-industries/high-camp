@@ -19,16 +19,12 @@ describe('EtlService Tests', function() {
     */
     it('should put an arument called signals into an object named signals', function(done) {
       //
-      args = argFactory();
+
       //this needs to be moved into a helper that tests itself..
-      spy = sinon.spy(args,"samples");
-      etlService.collectInput(args,spy);
-      console.log(spy);
-      expect(spy).to.have.been.calledWith("collectInput args");
-
+      etlService.collectInput(signals);
+      expect(signals).to.not.be.null;
       done();
-    });
-
+    })
   });
 
 
