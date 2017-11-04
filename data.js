@@ -18,11 +18,9 @@ function createSignals(){
 
     var mockSignals = function signalsObject(){
         var collection = [gmail,pingSensor];
-
         this.list = function(){
           return collection.map;
         }
-
     }
     return new mockSignals();
 }

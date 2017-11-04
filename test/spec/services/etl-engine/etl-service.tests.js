@@ -21,7 +21,7 @@ describe('EtlService Tests', function() {
       //lets add some behavioral rules for our mock
       signals.expects("list").once().throws();
       etlService.collectInput(signals);
-      expect(signals).to.not.be.null;
+      signals.verify();
       done();
     })
   });
