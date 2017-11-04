@@ -17,7 +17,7 @@ describe('EtlService Tests', function() {
     /*
       do not not test method signatures as we pass arguments as objects
     */
-    it('should put an arument called signals into an object named signals', function(done) {
+    it('should invoke list() on signals', function(done) {
       //lets add some behavioral rules for our mock
       var signals = mockFactory.createSignals();
       var mock = sinon.mock(signals).expects("list").atLeast(1);
