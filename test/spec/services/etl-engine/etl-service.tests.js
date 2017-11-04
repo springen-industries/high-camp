@@ -26,9 +26,20 @@ describe('EtlService Tests', function() {
       done();
     });
 
-    it('should return an array of callback handles',function(done) {
-      expect(etlService.collectInput(signals)).to.be.an('Array');
+    it('should return an array',function(done) {
+      var etlResult = etlService.collectInput(signals);
+      expect(etlResult).to.be.an('Array');
       done();
+    });
+    it('should return the same number of objects that get passed', function(done){
+      var etlResult = etlService.collectInput(signals);
+      expect(etlResult.length).to.not.equal(0);
+      done();
+    });
+
+    //TODO: make a fake service enpoint and test that the function calls it
+    it('should call off for resources ', function(){
+      expect(null).to.get.calledOnce();
     });
 
   });
