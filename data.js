@@ -16,8 +16,13 @@ function createSignals(){
     var gmail = new Signal({mode:"batch", target:"api.gmail.com", sampleTime: new Date().getTime() });
     var pingSensor = new Signal({mode:"poll", target:"/dev/ttyACM0", sampleTime:new Date().getTime() } );
 
-    var mockSignals = [gmail,pingSensor];
-    return mockSignals
+   function signals(){};
+   signals.prototype = {
+       list: function() {
+     }
+   }
+   return new signals();
+
 }
 
 function MockFactory(){}
