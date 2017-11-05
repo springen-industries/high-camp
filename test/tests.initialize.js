@@ -11,4 +11,3 @@ beforeEach(function() {
   chai.use(sinonChai);
 
 });
-  

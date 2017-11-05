@@ -1,3 +1,4 @@
+serviceMocks = require('../../../service-mocks.js')
 
 describe('EtlService Tests', function() {
 
@@ -38,8 +39,12 @@ describe('EtlService Tests', function() {
     });
 
     //TODO: make a fake service enpoint and test that the function calls it
-    it('should call off for resources ', function(){
-      expect(null).to.get.calledOnce();
+    it('should call off to signal.target with signal.protocl ', function(){
+      var serv = sinon.mock(serviceMocks,"mailEndpoint");
+      var etlResult = etlService.collectInput(signals);
+      serv.verify();
+      expect(serv.mailEndpoint).to.be.called.once().withArgs("Hello");
+
     });
 
   });
