@@ -3,10 +3,10 @@ global.chai = require("chai");
 global.sinon = require("sinon");
 global.sinonChai = require("sinon-chai");
 
-global.signals = mockFactory.createSignals();
 
 beforeEach(function() {
 
+  global.signals = mockFactory.createSignals();
   global.expect = chai.expect;
   chai.use(sinonChai);
 

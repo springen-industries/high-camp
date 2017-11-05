@@ -2,9 +2,13 @@
 function EtlService() {
 }
 
-function collectInput(services) {
-    var sampleList = services.list();
-    return [];
+function collectInput(signals) {
+    var sampleList = signals.list();
+    return sampleList;
+}
+
+function sampleSignal(signal){
+  
 }
 
 EtlService.prototype = {

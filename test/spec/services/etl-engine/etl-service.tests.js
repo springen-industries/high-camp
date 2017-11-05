@@ -1,3 +1,4 @@
+serviceMocks = require('../../../service-mocks.js')
 
 describe('EtlService Tests', function() {
 
@@ -26,9 +27,24 @@ describe('EtlService Tests', function() {
       done();
     });
 
-    it('should return an array of callback handles',function(done) {
-      expect(etlService.collectInput(signals)).to.be.an('Array');
+    it('should return an array',function(done) {
+      var etlResult = etlService.collectInput(signals);
+      expect(etlResult).to.be.an('Array');
       done();
+    });
+    it('should return the same number of objects that get passed', function(done){
+      var etlResult = etlService.collectInput(signals);
+      expect(etlResult.length).to.not.equal(0);
+      done();
+    });
+
+    //TODO: make a fake service enpoint and test that the function calls it
+    it('should call off to signal.target with signal.protocl ', function(){
+      var serv = sinon.mock(serviceMocks,"mailEndpoint");
+      var etlResult = etlService.collectInput(signals);
+      serv.verify();
+      expect(serv.mailEndpoint).to.be.called.once().withArgs("Hello");
+
     });
 
   });
