@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-
 var signalSchema = new mongoose.Schema({
      signal: {
        mode: String,
