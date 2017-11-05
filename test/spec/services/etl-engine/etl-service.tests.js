@@ -1,26 +1,16 @@
-serviceMocks = require('../../../service-mocks.js')
+
 
 describe('EtlService Tests', function() {
 
-  var etlService;
 
-  beforeEach(function() {
-    etlService = require('../../../../app/services/etl-engine/etl-service');
-  });
 
   describe('collectInput', function() {
-
     it('should be a function', function(done) {
       expect(etlService.collectInput).to.be.a('function');
       done();
     });
 
-    /*
-      do not not test method signatures as we pass arguments as objects
-    */
     it('should invoke list() on signals', function(done) {
-      //lets add some behavioral rules for our mock
-
       var mock = sinon.mock(signals).expects("list").atLeast(1);
       etlService.collectInput(signals);
       mock.verify();
@@ -37,14 +27,12 @@ describe('EtlService Tests', function() {
       expect(etlResult.length).to.not.equal(0);
       done();
     });
-
-    //TODO: make a fake service enpoint and test that the function calls it
-    it('should call off to signal.target with signal.protocl ', function(){
-      var serv = sinon.mock(serviceMocks,"mailEndpoint");
+    it('should call off to signal.target with signal.protocl ', function(done){
+      var etlMock =sinon.mock(etlService).expects('sample').once().withArgs({target: 'http://gmail.com', protocol: "REST"});
       var etlResult = etlService.collectInput(signals);
-      serv.verify();
-      expect(serv.mailEndpoint).to.be.called.once().withArgs("Hello");
-
+      etlMock.verify();
+      etlMock.restore();
+      done();
     });
 
   });

@@ -7,14 +7,15 @@ function collectInput(signals) {
     return sampleList;
 }
 
-function sampleSignal(signal){
-  
+function sample(targetURI,protocol){
+    return targetURI;
 }
 
 EtlService.prototype = {
-  collectInput: collectInput
+  collectInput: collectInput,
+  sample: sample
 };
 
-var etlService = new EtlService();
 
-module.exports = etlService;
+
+module.exports = EtlService;
