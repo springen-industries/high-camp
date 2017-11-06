@@ -3,18 +3,21 @@ function EtlService() {
 }
 
 function collectInput(signals) {
-    var sampleList = signals.list();
-    return sampleList;
+     signals.forEach(function sampleSignal(signal){
+       sample(signal.target,signal.protocol);
+     })
+     return signals;
 }
 
-function sampleSignal(signal){
-  
+function sample(targetURI,protocol){
+    return 0;
 }
 
 EtlService.prototype = {
-  collectInput: collectInput
+  collectInput: collectInput,
+  sample: sample
 };
 
-var etlService = new EtlService();
 
-module.exports = etlService;
+
+module.exports = EtlService;
