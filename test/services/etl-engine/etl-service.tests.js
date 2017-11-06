@@ -1,8 +1,10 @@
-
+var DataMockFactory = require("test/DataMockFactory.js");
 
 describe('EtlService Tests', function() {
 
-
+ beforeEach(function(){
+   var signals = DataMockFactory.createSignals();
+ })
 
   describe('collectInput', function() {
     it('should be a function', function(done) {
@@ -10,8 +12,8 @@ describe('EtlService Tests', function() {
       done();
     });
 
-    it('should invoke list() on signals', function(done) {
-      var mock = sinon.mock(signals).expects("list").atLeast(1);
+    it('should iterate over signals using forEach', function(done) {
+      var mock = sinon.mock(signals).expects("forEach").atLeast(1);
       etlService.collectInput(signals);
       mock.verify();
       done();
@@ -27,11 +29,11 @@ describe('EtlService Tests', function() {
       expect(etlResult.length).to.not.equal(0);
       done();
     });
-    it('should call off to signal.target with signal.protocl ', function(done){
-      var etlMock =sinon.mock(etlService).expects('sample').once().withArgs({target: 'api.google.com/mail/all-mail', protocol: "HTTPS" authToken: "xxx", authMode: "OAuth2"});
+    it('should call sample for every element in signal array ', function(done){
+      etlSpy = sinon.spy(etlService,"sample");
       var etlResult = etlService.collectInput(signals);
-      etlMock.verify();
-      etlMock.restore();
+      // console.log(etlSpy);
+      expect(etlSpy.callCount).to.equal(signals.length);
       done();
     });
 
