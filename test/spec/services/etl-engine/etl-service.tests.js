@@ -28,7 +28,7 @@ describe('EtlService Tests', function() {
       done();
     });
     it('should call off to signal.target with signal.protocl ', function(done){
-      var etlMock =sinon.mock(etlService).expects('sample').once().withArgs({target: 'http://gmail.com', protocol: "REST"});
+      var etlMock =sinon.mock(etlService).expects('sample').once().withArgs({target: 'api.google.com/mail/all-mail', protocol: "HTTPS" authToken: "xxx", authMode: "OAuth2"});
       var etlResult = etlService.collectInput(signals);
       etlMock.verify();
       etlMock.restore();
