@@ -2,11 +2,16 @@
 function EtlService() {
 }
 
-function collectInput(signals) {
+function collectInput(signals, callback) {
      signals.forEach(function sampleSignal(signal){
        sample(signal.target,signal.protocol);
      })
-     return signals;
+     if (callback != undefined && callback != null) {
+       callback();
+       return;
+     } else {
+       return signals;
+     }
 }
 
 function sample(targetURI,protocol){

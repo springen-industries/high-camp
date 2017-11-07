@@ -4,7 +4,7 @@ describe('EtlService Tests', function() {
 
  beforeEach(function(){
    var signals = DataMockFactory.createSignals();
- })
+  })
 
   describe('collectInput', function() {
     it('should be a function', function(done) {
@@ -19,6 +19,8 @@ describe('EtlService Tests', function() {
       done();
     });
 
+
+    /// synchronus tests
     it('should return an array',function(done) {
       var etlResult = etlService.collectInput(signals);
       expect(etlResult).to.be.an('Array');
@@ -37,6 +39,14 @@ describe('EtlService Tests', function() {
       done();
     });
 
+  //asynchronus testss
+  describe('colectInput -- Response', function(){
+    it('should set up an asynch callbackSpy for when sample operation completes', function(done){
+       etlResult = etlService.collectInput(signals,callback);
+       expect(callback.called).to.be.true;
+       done();
+      });
+    });
   });
 
 
