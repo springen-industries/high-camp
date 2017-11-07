@@ -14,6 +14,30 @@ describe('EtlService Tests', function() {
 
 
 
+<<<<<<< HEAD
+=======
+    /// synchronus tests
+    it('should return an array',function(done) {
+      var etlResult = etlService.collectInput(signals);
+      expect(etlResult).to.be.an('Array');
+      done();
+    });
+    it('should return the same number of objects that get passed', function(done){
+      var etlResult = etlService.collectInput(signals);
+      expect(etlResult.length).to.not.equal(0);
+      done();
+    });
+
+    it('TODO: FIX SINON SPY -should call sample for every element in signal array ', function(done){
+    //   etlSpy = sinon.spy(etlService,"sample");
+    //   if (etlSpy.stackTrace.indexOf("Error") > 0) {
+    //     throw new new exception(etlSpy.stackTrace);
+    //   }
+    //   var etlResult = etlService.collectInput(signals);
+    //   expect(etlSpy.callCount).to.equal(signals.length);
+      done();
+    });
+>>>>>>> dev.etl.collectInput
 
     describe('collectInput', function() {
       it('should be a function', function(done) {
