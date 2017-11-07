@@ -38,6 +38,10 @@ describe('EtlService Tests', function() {
     });
     it('should call sample for every element in signal array ', function(done){
       etlSpy = sinon.spy(etlService,"sample");
+      console.log(etlSp);
+      if (etlSpy.stackTrace.indexOf("Error") > 0) {
+        throw new new exception(etlSpy.stackTrace);
+      }
       var etlResult = etlService.collectInput(signals);
       // console.log(etlSpy);
       expect(etlSpy.callCount).to.equal(signals.length);
