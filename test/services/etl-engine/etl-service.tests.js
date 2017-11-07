@@ -36,7 +36,14 @@ describe('EtlService Tests', function() {
       expect(etlSpy.callCount).to.equal(signals.length);
       done();
     });
-
+  describe('colectInput -- Response', function(){
+    it('should set up an asynch callback for when sample operation completes', function(done){
+       var callback = sinon.spy();
+       etlResult = etlService.collectInput(signals,callback);
+       expect(callback.called).to.be.true;
+       done();
+      });
+    });
   });
 
 
