@@ -6,7 +6,7 @@ function ServiceMocks () {
 }
 
 function mailEndpoint(request) {
-
+  return request
 }
 
 ServiceMocks.prototype = {
