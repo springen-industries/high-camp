@@ -42,8 +42,8 @@ describe('EtlService Tests', function() {
   //asynchronus testss
   describe('colectInput -- Response', function(){
     it('should set up an asynch callbackSpy for when sample operation completes', function(done){
-       etlResult = etlService.collectInput(signals,callbackSpy);
-       expect(callbackSpy.called).to.be.true;
+       etlResult = etlService.collectInput(signals,callback);
+       expect(callback.called).to.be.true;
        done();
       });
     });

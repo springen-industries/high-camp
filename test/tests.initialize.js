@@ -11,5 +11,5 @@ beforeEach(function() {
   global.signals = mockFactory.createSignals();
   global.expect = chai.expect;
   chai.use(sinonChai);
-  global.callbackSpy = sinon.spy();
+  global.callback = sinon.spy();
 });
