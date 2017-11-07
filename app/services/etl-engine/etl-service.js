@@ -2,19 +2,27 @@
 function EtlService() {
 }
 
-function collectInput(signals) {
-    var sampleList = signals.list();
-    return sampleList;
+function collectInput(signals, callback) {
+     signals.forEach(function sampleSignal(signal){
+       sample(signal.target,signal.protocol);
+     })
+     if (callback != undefined && callback != null) {
+       callback();
+       return;
+     } else {
+       return signals;
+     }
 }
 
-function sampleSignal(signal){
-  
+function sample(targetURI,protocol){
+    return 0;
 }
 
 EtlService.prototype = {
-  collectInput: collectInput
+  collectInput: collectInput,
+  sample: sample
 };
 
-var etlService = new EtlService();
 
-module.exports = etlService;
+
+module.exports = EtlService;
