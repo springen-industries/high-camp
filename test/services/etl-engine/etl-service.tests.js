@@ -3,8 +3,11 @@ var DataMockFactory = require("test/DataMockFactory.js");
 describe('EtlService Tests', function() {
 
  beforeEach(function(){
+
    var signals = DataMockFactory.createSignals();
+
   })
+
 
 
 
@@ -25,6 +28,9 @@ describe('beginStateLoop', function() {
       expect(etlService.beginStateLoop).to.be.a('function');
     });
   });
+
+
+
 
 
 });
