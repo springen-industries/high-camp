@@ -53,4 +53,11 @@ describe('EtlService Tests', function() {
     });
   });
 
+  describe('sample', function(){
+    it('should exist in etlService', function(done){
+      expect(etlService.sample).to.be.a("function");
+      done();
+    });
+  });
+
 });
