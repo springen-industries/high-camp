@@ -3,7 +3,7 @@ function EtlService() {
 }
 
 function collectInput(signals, callback) {
-     signals.forEach(function sampleSignal(signal){
+    signals.forEach(function sampleSignal(signal){
        sample(signal.target,signal.protocol);
      })
     //  console.log(callback,"JSON");

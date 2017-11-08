@@ -2,15 +2,6 @@ var DataMockFactory = require("test/DataMockFactory.js");
 
 describe('EtlService Tests', function() {
 
- beforeEach(function(){
-
-   var signals = DataMockFactory.createSignals();
-
- });
-
-
-
-
   describe('collectInput', function() {
     it('should be a function', function(done) {
       expect(etlService.collectInput).to.be.a('function');
@@ -46,7 +37,6 @@ describe('EtlService Tests', function() {
     //   expect(etlSpy.callCount).to.equal(signals.length);
       done();
     });
-
   //asynchronus testss
   describe('colectInput -- Response', function(){
     it('should set up an asynch callbackSpy for when sample operation completes', function(done){
@@ -55,9 +45,11 @@ describe('EtlService Tests', function() {
        done();
       });
     });
-    it('callback should get passed an array with ', function(){
-      etlResult = etlService.collectInput(signals.callback);
-      expect(callback.called)
+    it('callback should get passed an array with SampleObjects from each signal sampled ', function(){
+      etlResult = etlService.collectInput(signals,callback);
+      console.log(callback);
+      expect(callback.firstCall.args.legth).to.be.greaterThan(0);
+      expect(callback.firstCall.args[0]).to.be.an("Array");
     });
   });
 
