@@ -8,7 +8,7 @@ function collectInput(signals, callback) {
      })
     //  console.log(callback,"JSON");
      if (callback != undefined && callback != null) {
-       callback();
+       callback(signals);
        return;
      } else {
        return signals;

@@ -37,6 +37,7 @@ describe('EtlService Tests', function() {
     //   expect(etlSpy.callCount).to.equal(signals.length);
       done();
     });
+  });
   //asynchronus testss
   describe('colectInput -- Response', function(){
     it('should set up an asynch callbackSpy for when sample operation completes', function(done){
@@ -44,17 +45,12 @@ describe('EtlService Tests', function() {
        expect(callback.called).to.be.true;
        done();
       });
-    });
-    it('callback should get passed an array with SampleObjects from each signal sampled ', function(){
+    it('should get passed an array with SampleObjects from each signal sampled ', function(done){
       etlResult = etlService.collectInput(signals,callback);
-      console.log(callback);
-      expect(callback.firstCall.args.legth).to.be.greaterThan(0);
-      expect(callback.firstCall.args[0]).to.be.an("Array");
+      expect(callback.firstCall.args.length).to.be.greaterThan(0);
+      // expect(callback.firstCall.args[0]).to.be.an("Array");
+      done()
     });
   });
-
-
-
-
 
 });
