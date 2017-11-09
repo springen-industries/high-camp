@@ -52,7 +52,7 @@ describe('EtlService Tests', function() {
       done();
     });
     it('should return a promise when called overloaded asynchronusly', function(done){
-      expect(etlService.sample()).to.be.a("Promise");
+      expect(etlService.sample(signals,function (){})).to.be.a("Promise");
       done();
     });
   });

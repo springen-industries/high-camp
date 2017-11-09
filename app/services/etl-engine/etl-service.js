@@ -11,7 +11,6 @@ function collectInput(signals, callback) {
   }
 }
 
-
 function collectInputSynch(signals){
   var ra = [];
   signals.forEach(function sampleSignal(signal){
@@ -21,22 +20,28 @@ function collectInputSynch(signals){
 }
 
 function collectInputAsynch(signals,callback){
+
   return new Promise(function(fulfill,reject){
+     var promises = [];
      signals.forEach(function sampleSignal(signal){
-       sample(signal.target,signal.protocol,callback);
+       promises.push(sample(signal.target,signal.protocol,callback));
      });
    });
  }
 
 
 
-function sample(signal){
+function sample(signal, callback){
+  if (callback){
     return new Promise(function(fulfill, reject){
       get("https://google.com"), function(err, res) {
           if(err) reject(err);
           else resolve(res);
       }
     });
+} else {
+    return 0;
+  }
 }
 
 EtlService.prototype = {
