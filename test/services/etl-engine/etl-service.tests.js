@@ -40,22 +40,19 @@ describe('EtlService Tests', function() {
   });
   //asynchronus testss
   describe('colectInput -- Response', function(){
-    it('should set up an asynch callbackSpy for when sample operation completes', function(done){
-       etlResult = etlService.collectInput(signals,callback);
-       expect(callback.called).to.be.true;
+    it('should return a promise when called with asynch overload', function(done){
+       expect(etlService.collectInput(signals,callback)).to.be.a("Promise");
        done();
-      });
-    it('should get passed an array with SampleObjects from each signal sampled ', function(done){
-      etlResult = etlService.collectInput(signals,callback);
-      expect(callback.firstCall.args.length).to.be.greaterThan(0);
-      // expect(callback.firstCall.args[0]).to.be.an("Array");
-      done()
     });
   });
 
   describe('sample', function(){
     it('should exist in etlService', function(done){
       expect(etlService.sample).to.be.a("function");
+      done();
+    });
+    it('should return a promise when called overloaded asynchronusly', function(done){
+      expect(etlService.sample()).to.be.a("Promise");
       done();
     });
   });
