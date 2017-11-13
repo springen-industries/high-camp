@@ -46,21 +46,13 @@ describe('function - sample', function(){
   });
 
   describe("synchronus tests", function(){
-    it('should return an array', function(done){
-      expect(etlService.sample(signals)).to.be.an("Array");
-      done();
-    });
-    it('should be the length of array passed as argument',function (done){
-      expect(etlService.sample(signals).length).to.equal(signals.length);
-      done();
-    });
-    it('should contain Observation objects',function(done){
-      expect(etlService.sample(signals)[0]).to.be.an("Observation");
+    it('should reurn an object of type Obsersvation',function(done){
+      expect(etlService.sample(signals)[0]).to.be.an("Obsersvation");
     });
   });
 
   describe("asynchronus tests",function(){
-    it('should return a promise when called overloaded with a callback', function(done){
+    it('overloading with callback should return a promise', function(done){
       var emptyCallback = function(){};
       expect(etlService.sample(signals,emptyCallback)).to.be.a("Promise");
       done();
