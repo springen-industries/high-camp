@@ -24,7 +24,7 @@ function collectInputAsynch(signals,callback){
   return new Promise(function(fulfill,reject){
      var promises = [];
      signals.forEach(function sampleSignal(signal){
-       promises.push(sample(signal,callback));
+       promises.push(sample(signal.target,signal.protocol,callback));
      });
    });
  }
@@ -35,8 +35,8 @@ function sample(signal, callback){
   if (callback){
     return new Promise(function(fulfill, reject){
       get("https://google.com"), function(err, res) {
-          if(err) reject(callback(err));
-          else resolve(callback(res));
+          if(err) reject(err);
+          else resolve(res);
       }
     });
 } else {

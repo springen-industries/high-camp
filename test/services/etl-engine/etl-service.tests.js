@@ -51,13 +51,6 @@ describe('EtlService Tests', function() {
       expect(etlService.sample).to.be.a("function");
       done();
     });
-    it('should call collectInputAsynch',function (done){
-      var asynchSpy =  sinon.spy(etlService,"collectInputAsynch");
-      var emptyCallback = function(){};
-      etlService.sample(signals, emptyCallback());
-      expect(asynchSpy.called).to.equal(true);
-      done();
-    });
     it('should return a promise when called overloaded with a callback', function(done){
       var emptyCallback = function(){};
       expect(etlService.sample(signals,emptyCallback)).to.be.a("Promise");
