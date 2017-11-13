@@ -39,8 +39,8 @@ describe('EtlService Tests', function() {
     });
   });
   //asynchronus testss
-  describe('colectInput -- Response', function(){
-    it('should return a promise when called with asynch overload', function(done){
+  describe('colectInput --asynchronus execution and response', function(){
+    it('should return a promise when overloaded with a callback', function(done){
        expect(etlService.collectInput(signals,callback)).to.be.a("Promise");
        done();
     });
@@ -51,8 +51,9 @@ describe('EtlService Tests', function() {
       expect(etlService.sample).to.be.a("function");
       done();
     });
-    it('should return a promise when called overloaded asynchronusly', function(done){
-      expect(etlService.sample(signals,function (){})).to.be.a("Promise");
+    it('should return a promise when called overloaded with a callback', function(done){
+      var emptyCallback = function(){};
+      expect(etlService.sample(signals,emptyCallback).to.be.a("Promise");
       done();
     });
   });
