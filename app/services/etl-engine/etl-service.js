@@ -5,7 +5,7 @@ function EtlService() {
 
 function collectInput(signals, callback) {
   if (callback){
-    collectInputAsynch(signals,callback);
+    return collectInputAsynch(signals,callback);
   } else {
     return collectInputSynch(signals);
   }
@@ -46,7 +46,9 @@ function sample(signal, callback){
 
 EtlService.prototype = {
   collectInput: collectInput,
-  sample: sample
+  sample: sample,
+  collectInputSynch: collectInputSynch,
+  collectInputAsynch: collectInputAsynch
 };
 
 
