@@ -9,6 +9,7 @@ var EtlService = require('app/services/etl-engine/etl-service.js');
 beforeEach(function() {
   global.etlService = new EtlService();
   global.signals = mockFactory.createSignals();
+  global.sample = mockFactory.createSample(); 
   global.expect = chai.expect;
   chai.use(sinonChai);
   global.callback = sinon.spy();
