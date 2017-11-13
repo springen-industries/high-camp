@@ -5,10 +5,8 @@ function EtlService() {
 
 function collectInput(signals, callback) {
   if (callback){
-    console.log("calling asynchronusly");
     collectInputAsynch(signals,callback);
   } else {
-    console.log("calling synchronusly")
     return collectInputSynch(signals);
   }
 }
