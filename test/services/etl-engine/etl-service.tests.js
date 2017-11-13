@@ -47,7 +47,7 @@ describe('function - sample', function(){
 
   describe("synchronus tests", function(){
     it('should reurn an object of type Obsersvation',function(done){
-      expect(etlService.sample(signals)[0]).to.be.an("Obsersvation");
+      expect(etlService.sample(signals)[0]).to.be.an("Sample");
     });
   });
 

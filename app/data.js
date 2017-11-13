@@ -4,11 +4,10 @@ global.SignalSchema = new mongoose.Schema({
        identifier:  mongoose.Schema.Types.ObjectId,
        mode: String,
        target: String,
-       sampleTime: {type: Date, default: Date.now},
        lastReading:  Object
      },
      observation: {
-       sampleTime:  Number,
+       sampleTime: {type: Date, default: Date.now},
        signalIdentifier: mongoose.Schema.Types.ObjectId,
        reading: Object
       }

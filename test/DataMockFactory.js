@@ -13,7 +13,7 @@ function createSignals(){
 }
 function createSample(){
   var Sample = mongoose.model('sample', SignalSchema);
-  var sample = new Sample();
+  var sample = new Sample({ reading: 0});
   return sample;
 
 }
