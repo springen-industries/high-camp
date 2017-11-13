@@ -53,9 +53,10 @@ describe('EtlService Tests', function() {
     });
     it('should return a promise when called overloaded with a callback', function(done){
       var emptyCallback = function(){};
-      expect(etlService.sample(signals,emptyCallback).to.be.a("Promise");
+      expect(etlService.sample(signals,emptyCallback)).to.be.a("Promise");
       done();
     });
+
   });
 
 });
