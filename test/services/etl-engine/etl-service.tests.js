@@ -59,11 +59,16 @@ describe("asynchronus tests",function(){
     });
     it('should call our callback on resolution', function(done){
          var cb = sinon.spy();
-         etlService.sample(signals,cb).then( (samplePromise) => {
+         etlService.sample(signals[0],cb).then( (samplePromise) => {
            expect(cb.called).to.equal(true);
-         }).then(callback, function(){ done();
-      });
-    })
+         }).then(cb, function(){ done(); });
+    });
+    it('should pass a sample object into callback on resolution', function(){
+        var cb = sinon.spy();
+        etlService.sample(signals[0],cb).then( (samplePromise) => {
+          expect(cb.calledWith).to.be.a("Ball");
+        }).then(cb,function(){ done();} );
+    });
   });
 });
 
