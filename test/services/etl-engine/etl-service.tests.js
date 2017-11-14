@@ -52,14 +52,18 @@ describe("asynchronus tests",function(){
       expect(etlService.sample(signals,emptyCallback)).to.be.a("Promise");
       done();
     });
-    it('should resolve',function(done, callback){
+    it('should resolve',function(done){
        etlService.sample(signals).then( (samplePromise) => {
          expect(samplePromise).to.equal('promise resolved');
-       }).then(callback, function(){ done(); } );
+       }).then(null, function(){ done(); } );
     });
-    // it('should call our callback on resolution', function(done){
-    //
-    // })
+    it('should call our callback on resolution', function(done){
+         var cb = sinon.spy();
+         etlService.sample(signals,cb).then( (samplePromise) => {
+           expect(cb.called).to.equal(true);
+         }).then(callback, function(){ done();
+      });
+    })
   });
 });
 
