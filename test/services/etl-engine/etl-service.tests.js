@@ -63,6 +63,10 @@ describe('function - sample', function(){
       expect(etlService.sample(signals,emptyCallback)).to.be.a("Promise");
       done();
     });
+    it('should resolve itself upon completion of async execution',function(done){
+      throw new Error("I'm here, writing a test for the promise for sampling");
+      done()
+    });
   });
 });
 
