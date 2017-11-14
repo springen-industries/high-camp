@@ -1,4 +1,5 @@
 var DataMockFactory = require("test/DataMockFactory.js");
+var mongoose = require('mongoose');
 
 describe('EtlService Tests', function() {
 
@@ -46,8 +47,13 @@ describe('function - sample', function(){
   });
 
   describe("synchronus tests", function(){
-    it('should reurn an object of type Obsersvation',function(done){
-      expect(etlService.sample(signals[0])).to.be.a("Sample");
+    it('should reurn an object of type sample',function(done){
+      var sample = etlService.sample(signals[0]);
+      /*TODO: figure out a better way to reflect type names than this
+        or at least wrap the data object in a sample object
+      */
+      expect(sample.typeName).to.equal("Sample");
+      done();
     });
   });
 

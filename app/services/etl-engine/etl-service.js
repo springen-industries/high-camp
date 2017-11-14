@@ -1,4 +1,4 @@
-
+var mongoose = require('mongoose');
 
 function EtlService() {
 }
@@ -20,12 +20,16 @@ function collectInputSynch(signals){
 }
 
 function collectInputAsynch(signals,callback){
-
   return new Promise(function(fulfill,reject){
-     var promises = [];
-     signals.forEach(function sampleSignal(signal){
-       promises.push(sample(signal.target,signal.protocol,callback));
-     });
+    try {
+       var promises = [];
+       signals.forEach(function sampleSignal(signal){
+         promises.push(sample(signal.target,signal.protocol,callback));
+       });
+       fulfill(promises);
+     } catch (err) {
+       reject(err);
+     }
    });
  }
 
@@ -36,11 +40,16 @@ function sample(signal, callback){
     return new Promise(function(fulfill, reject){
       get("https://google.com"), function(err, res) {
           if(err) reject(err);
-          else resolve(res);
+          else {
+            console.log(res);
+             resolve(res)
+          };
       }
     });
-} else {
-    return 0;
+  } else {
+    var Sample = mongoose.model('sample', SignalSchema);
+    var sample = new Sample({ reading: 0});
+    return sample.sample;
   }
 }
 
