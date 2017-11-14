@@ -33,25 +33,33 @@ function collectInputAsynch(signals,callback){
    });
  }
 
-
-
-function sample(signal, callback){
+function sample(signal,callback){
   if (callback){
+    return sampleAsync(signal,callback);
+  } else {
+    return sampleSync(signal);
+  }
+}
+
+
+function sampleAsync(signal, callback){
+
     return new Promise(function(fulfill, reject){
-      get("https://google.com"), function(err, res) {
+      sample(signal), function(err, res) {
           if(err) reject(err);
           else {
-            console.log(res);
-             resolve(res)
+             resolve(res);
           };
       }
     });
-  } else {
+  }
+
+  function sampleSync(signal){
     var Sample = mongoose.model('sample', SignalSchema);
     var sample = new Sample({ reading: 0});
     return sample.sample;
   }
-}
+
 
 EtlService.prototype = {
   collectInput: collectInput,
