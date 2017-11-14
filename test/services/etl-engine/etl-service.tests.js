@@ -55,9 +55,15 @@ describe("asynchronus tests",function(){
     it('should resolve',function(done){
        etlService.sample(signals).then( (samplePromise) => {
          expect(samplePromise).to.equal('promise resolved');
-       }).then(null,function(){ done();});
-
+       }).then(null, function(){ done(); } );
     });
+    it('should call our callback on resolution', function(done){
+         var cb = sinon.spy();
+         etlService.sample(signals,cb).then( (samplePromise) => {
+           expect(cb.called).to.equal(true);
+         }).then(callback, function(){ done();
+      });
+    })
   });
 });
 
