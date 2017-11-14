@@ -52,12 +52,14 @@ describe("asynchronus tests",function(){
       expect(etlService.sample(signals,emptyCallback)).to.be.a("Promise");
       done();
     });
-    it('should resolve',function(done){
+    it('should resolve',function(done, callback){
        etlService.sample(signals).then( (samplePromise) => {
          expect(samplePromise).to.equal('promise resolved');
-       }).then(null,function(){ done();});
-
+       }).then(callback, function(){ done(); } );
     });
+    // it('should call our callback on resolution', function(done){
+    //
+    // })
   });
 });
 
