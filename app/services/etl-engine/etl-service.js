@@ -33,25 +33,24 @@ function collectInputAsynch(signals,callback){
    });
  }
 
-
-
-function sample(signal, callback){
-  if (callback){
-    return new Promise(function(fulfill, reject){
-      get("https://google.com"), function(err, res) {
-          if(err) reject(err);
-          else {
-            console.log(res);
-             resolve(res)
-          };
-      }
+function sample(signal){
+  var promise = new Promise(function (resolve, reject) {
+      sampleAsync(signal, function (err, res) {
+        if (err) reject(err);
+        else resolve(res);
+      });
     });
-  } else {
+    return promise;
+ }
+
+ function sampleAsync(signal,callback){
     var Sample = mongoose.model('sample', SignalSchema);
     var sample = new Sample({ reading: 0});
-    return sample.sample;
+    callback(sample.sample);
   }
-}
+
+
+
 
 EtlService.prototype = {
   collectInput: collectInput,
