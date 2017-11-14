@@ -63,9 +63,12 @@ describe('function - sample', function(){
       expect(etlService.sample(signals,emptyCallback)).to.be.a("Promise");
       done();
     });
-    it('should resolve itself upon completion of async execution',function(done){
-      throw new Error("I'm here, writing a test for the promise for sampling");
-      done()
+    it('should resolve and hit the callback we throw at it',function(done){
+      var callbackSpy = sinon.spy;
+      var promise = etlService.sample(signals,callbackSpy);
+      promise.then( (result) => {
+          expect(result).to.equal('promise resolved');
+        }).then(done, done);
     });
   });
 });
