@@ -53,10 +53,10 @@ describe("asynchronus tests",function(){
       done();
     });
     it('should resolve',function(done){
-      var promise = etlService.sample(signals);
-      promise.then( (result) => {
-          expect(result).to.equal('promise resolved');
-        }).then(done, done);
+       etlService.sample(signals).then( (samplePromise) => {
+         expect(samplePromise).to.equal('promise resolved');
+       }).then(null,function(){ done();});
+
     });
   });
 });
